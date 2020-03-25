@@ -26,14 +26,14 @@ $resultsall = $results->fetchAll();
   
   <br />
   <br />
-  <div class="container">
-   <h1>My To-Do List</h1>
+  <div class="container d-flex justify-content-center" style="width: 500px;">
+   <h1 class="text-center">My To-Do List</h1>
    <br />
    
    <div class="panel panel-default">
     <div class="panel-heading">
      <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-12">
        <h3 class="panel-title">To do</h3>
    <div class="list-group">
        <?php
@@ -56,7 +56,7 @@ $resultsall = $results->fetchAll();
    <div class="panel panel-default">
     <div class="panel-heading">
      <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-12">
        <h3 class="panel-title">Add new task</h3>
       </div>
      </div>
