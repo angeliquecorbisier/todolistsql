@@ -1,7 +1,7 @@
-<!-- <?php
+<?php
 
 
-include('connection.php');
+require ('connection.php');
 
 if($_POST["task_list_id"])
 {
@@ -20,4 +20,4 @@ if($_POST["task_list_id"])
  }
 }
 
-?> -->
+?> 
