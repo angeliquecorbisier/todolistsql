@@ -29,29 +29,13 @@ $resultsall = $results->fetchAll();
   <div class="container">
    <h1>My To-Do List</h1>
    <br />
+   
    <div class="panel panel-default">
     <div class="panel-heading">
      <div class="row">
       <div class="col-md-9">
-       <h3 class="panel-title">Add new task</h3>
-      </div>
-      <div class="col-md-3">
-       
-      </div>
-     </div>
-    </div>
-      <div class="panel-body">
-       <form method="post" id="to_do_form">
-        <span id="message"></span>
-        <div class="input-group">
-         <input type="text" name="task_name" id="task_name" class="form-control input-lg" autocomplete="off" placeholder="Title..." />
-         <div class="input-group-btn">
-          <button type="submit" name="submit" id="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span></button>
-         </div>
-        </div>
-       </form>
-       <br />
-       <div class="list-group">
+       <h3 class="panel-title">To do</h3>
+   <div class="list-group">
        <?php
        foreach($resultsall as $row)
        {
@@ -64,12 +48,41 @@ $resultsall = $results->fetchAll();
        }
        ?>
        </div>
+       </div>
+       </div>
+       </div>
+
+
+   <div class="panel panel-default">
+    <div class="panel-heading">
+     <div class="row">
+      <div class="col-md-9">
+       <h3 class="panel-title">Add new task</h3>
+      </div>
+     </div>
+    </div>
+      <div class="panel-body">
+       <form method="post" id="to_do_form">
+        <span id="message"></span>
+        <div class="input-group">
+         <input type="text" name="task_name" id="task_name" class="form-control input-lg" autocomplete="off" placeholder="Title..." />
+         <div class="input-group-btn">
+          <button type="submit" name="submit" id="submit" class="btn btn-dark btn-lg"><span class="glyphicon glyphicon-plus"></span></button>
+         </div>
+        </div>
+       </form>
+       <br />
+       
       </div>
      </div>
   </div>
 
   <footer>
+
   <script type="text/javascript" src="script.js"></script>
-</footer>
+
+  </footer>
+
  </body>
 </html>
+
