@@ -9,11 +9,11 @@ if($_POST["task_list_id"])
   ':task_list_id'  => $_POST['task_list_id']
  );
 
- $query = "DELETE FROM task_list WHERE task_list_id = :task_list_id";
+ $sql = "DELETE FROM task_list WHERE task_list_id = :task_list_id";
 
- $statement = $pdo->prepare($query);
+ $results = $pdo->prepare($sql);
 
- if($statement->execute($data))
+ if($results->execute($data))
  {
   echo 'done';
  }

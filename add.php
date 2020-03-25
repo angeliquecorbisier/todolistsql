@@ -11,11 +11,11 @@ if($_POST["task_name"])
   ':task_status' => 'no'
  );
 
- $query = " INSERT INTO task_list (user_id, task_details, task_status) VALUES (:user_id, :task_details, :task_status)";
+ $sql = " INSERT INTO task_list (user_id, task_details, task_status) VALUES (:user_id, :task_details, :task_status)";
 
- $statement = $pdo->prepare($query);
+ $results = $pdo->prepare($sql);
 
- if($statement->execute($data))
+ if($results->execute($data))
  {
   $task_list_id = $pdo->lastInsertId();
 

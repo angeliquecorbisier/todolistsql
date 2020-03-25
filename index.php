@@ -3,13 +3,13 @@
 
 require ('connection.php');
 
-$query = "SELECT * FROM task_list WHERE user_id = '".$_SESSION["user_id"]."' ORDER BY task_list_id DESC";
+$sql = "SELECT * FROM task_list WHERE user_id = '".$_SESSION["user_id"]."' ORDER BY task_list_id DESC";
 
-$statement = $pdo->prepare($query);
+$results = $pdo->prepare($sql);
 
-$statement->execute();
+$results->execute();
 
-$result = $statement->fetchAll();
+$resultsall = $results->fetchAll();
 
 ?>
 
@@ -33,7 +33,7 @@ $result = $statement->fetchAll();
     <div class="panel-heading">
      <div class="row">
       <div class="col-md-9">
-       <h3 class="panel-title">My To-Do List</h3>
+       <h3 class="panel-title">Add new task</h3>
       </div>
       <div class="col-md-3">
        
@@ -53,7 +53,7 @@ $result = $statement->fetchAll();
        <br />
        <div class="list-group">
        <?php
-       foreach($result as $row)
+       foreach($resultsall as $row)
        {
         $style = '';
         if($row["task_status"] == 'yes')
@@ -67,63 +67,9 @@ $result = $statement->fetchAll();
       </div>
      </div>
   </div>
+
+  <footer>
+  <script type="text/javascript" src="script.js"></script>
+</footer>
  </body>
 </html>
-
-<script>
- 
- $(document).ready(function(){
-  
-  $(document).on('submit', '#to_do_form', function(event){
-   event.preventDefault();
-
-   if($('#task_name').val() == '')
-   {
-    $('#message').html('<div class="alert alert-danger">Enter Task Details</div>');
-    return false;
-   }
-   else
-   {
-    $('#submit').attr('disabled', 'disabled');
-    $.ajax({
-     url:"add.php",
-     method:"POST",
-     data:$(this).serialize(),
-     success:function(data)
-     {
-      $('#submit').attr('disabled', false);
-      $('#to_do_form')[0].reset();
-      $('.list-group').prepend(data);
-     }
-    })
-   }
-  });
-
-  $(document).on('click', '.list-group-item', function(){
-   var task_list_id = $(this).data('id');
-   $.ajax({
-    url:"update.php",
-    method:"POST",
-    data:{task_list_id:task_list_id},
-    success:function(data)
-    {
-     $('#list-group-item-'+task_list_id).css('text-decoration', 'line-through');
-    }
-   })
-  });
-
-  $(document).on('click', '.badge', function(){
-   var task_list_id = $(this).data('id');
-   $.ajax({
-    url:"delete.php",
-    method:"POST",
-    data:{task_list_id:task_list_id},
-    success:function(data)
-    {
-     $('#list-group-item-'+task_list_id).fadeOut('slow');
-    }
-   })
-  });
-
- });
-</script>
